@@ -4,10 +4,10 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 
 urlpatterns = [
-    path('list',views.WatchListView.as_view(),name="watch-list-view"),
-    path('list/<int:pk>',views.WatchListDetail.as_view(),name="watch-list-detail"),
-    path('stream/',views.StreamPlatformList.as_view(),name="stream-platform"),
-    path('stream/<int:pk>',views.StreamPlatformDetails.as_view(),name="stream-platform-detail"), 
+    path('list',views.WatchListView.as_view(),name="watchlist-view"),
+    path('list/<int:pk>',views.WatchListDetail.as_view(),name="watchlist-detail"),
+    path('stream/',views.StreamPlatformList.as_view(),name="streamplatform"),
+    path('stream/<int:pk>',views.StreamPlatformDetails.as_view(),name="streamplatform-detail"), 
     path('', views.api_root),
 
 ]
