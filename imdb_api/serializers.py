@@ -7,8 +7,7 @@ class WatchListSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class StreamPlatformSerializer(serializers.HyperlinkedModelSerializer): 
-    url = serializers.HyperlinkedIdentityField(view_name="streamplatform-detail")
+class StreamPlatformSerializer(serializers.ModelSerializer): 
     class Meta:
         model = StreamPlatform  # Specify the model
         fields = '__all__'  # or list the specific fields you want to include 
