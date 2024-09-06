@@ -19,7 +19,8 @@ def api_root(request, format=None):
         'StreamPlatform': reverse('stream-platform', request=request, format=format)
     })
 
-class StreamPlatformViewSet(viewsets.ModelViewSet): 
+class StreamPlatformViewSet(viewsets.ModelViewSet):  
+      
       queryset = StreamPlatform.objects.all()
       serializer_class = StreamPlatformSerializer 
 
