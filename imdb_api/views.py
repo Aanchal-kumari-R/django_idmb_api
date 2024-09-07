@@ -20,7 +20,6 @@ def api_root(request, format=None):
     })
 
 class StreamPlatformViewSet(viewsets.ModelViewSet):  
-      
       queryset = StreamPlatform.objects.all()
       serializer_class = StreamPlatformSerializer 
 
