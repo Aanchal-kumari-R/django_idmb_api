@@ -1,13 +1,13 @@
 # from django.http import HttpResponse, JsonResponse
-from .models import WatchList , StreamPlatform  
-from .serializers import WatchListSerializer, StreamPlatformSerializer  
+from .models import WatchList , StreamPlatform  ,Review
+from .serializers import WatchListSerializer, StreamPlatformSerializer ,ReviewSerializer 
 from rest_framework.response import Response
 # from rest_framework import status 
 from rest_framework.decorators import api_view 
 # from django.http import Http404 
 from rest_framework.views import APIView 
 # from rest_framework import mixins
-# from rest_framework import generics 
+from rest_framework import generics 
 from rest_framework.reverse import reverse 
 from rest_framework import viewsets
 
@@ -27,6 +27,15 @@ class StreamPlatformViewSet(viewsets.ModelViewSet):
 class WatchListViewSet(viewsets.ModelViewSet):  
      queryset = WatchList.objects.all()
      serializer_class = WatchListSerializer 
+ 
+class ReviewListView(generics.ListCreateAPIView):   
+     queryset = Review.objects.all() 
+     serializer_class = ReviewSerializer
+     
+
+class ReviewDetailView(generics.RetrieveUpdateDestroyAPIView): 
+     queryset = Review.objects.all() 
+     serializer_class = ReviewSerializer
 
 
 

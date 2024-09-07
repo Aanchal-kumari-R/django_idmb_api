@@ -14,6 +14,9 @@ urlpatterns = [
     path('',include(router.urls)),
     path('',include(router.urls)),
     path('', views.api_root),
+    path('review/',views.ReviewListView.as_view(),name="Review-list"),
+    path('review/<int:pk>',views.ReviewDetailView.as_view(),name="Review-detail"),
+    path('', views.api_root),
 
 ]
 #urlpatterns = format_suffix_patterns(urlpatterns)
