@@ -28,10 +28,13 @@ class WatchListViewSet(viewsets.ModelViewSet):
      queryset = WatchList.objects.all()
      serializer_class = WatchListSerializer 
  
-class ReviewListView(generics.ListCreateAPIView):   
+class ReviewListView(generics.ListAPIView):   
      queryset = Review.objects.all() 
      serializer_class = ReviewSerializer
      
+     def get_queryset(self):
+          pk = self.kwargs['pk'] 
+          return Review.objects.filter(watchlist = pk)
 
 class ReviewDetailView(generics.RetrieveUpdateDestroyAPIView): 
      queryset = Review.objects.all() 

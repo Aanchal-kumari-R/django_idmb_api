@@ -13,9 +13,8 @@ router.register(r'list', views.WatchListViewSet, basename='watchlist')
 urlpatterns = [ 
     path('',include(router.urls)),
     path('',include(router.urls)),
-    path('', views.api_root),
-    path('review/',views.ReviewListView.as_view(),name="Review-list"),
-    path('review/<int:pk>',views.ReviewDetailView.as_view(),name="Review-detail"),
+    path('', views.api_root), 
+    path('list/<int:pk>/review/',views.ReviewListView.as_view(),name='review-list'),
     path('', views.api_root),
 
 ]
