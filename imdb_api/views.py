@@ -28,6 +28,15 @@ class WatchListViewSet(viewsets.ModelViewSet):
      queryset = WatchList.objects.all()
      serializer_class = WatchListSerializer 
  
+class ReviewCreate(generics.CreateAPIView): 
+     serializer_class = ReviewSerializer 
+
+     def perform_create(self,serializer): 
+          pk = self.kwargs['pk'] 
+          movie = WatchList.objects.get(pk=pk) 
+          serializer.save(watchlist=movie) 
+          
+
 class ReviewListView(generics.ListAPIView):   
      queryset = Review.objects.all() 
      serializer_class = ReviewSerializer
