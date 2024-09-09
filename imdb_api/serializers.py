@@ -8,7 +8,8 @@ class WatchListSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ReviewSerializer(serializers.ModelSerializer):   
-    review_user = serializers.StringRelatedField(read_only=True)
+    review_user = serializers.StringRelatedField(read_only=True) 
+    watchlist = serializers.StringRelatedField(read_only =True)
     class Meta: 
         model = Review 
         fields = '__all__'
