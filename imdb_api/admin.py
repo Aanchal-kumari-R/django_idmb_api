@@ -5,6 +5,5 @@ from .models import StreamPlatform,WatchList,Review,User
 admin.site.register(WatchList)
 admin.site.register(StreamPlatform)
 admin.site.register(Review) 
-admin.site.register(User) 
 
 
