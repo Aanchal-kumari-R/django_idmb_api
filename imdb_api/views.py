@@ -11,6 +11,7 @@ from rest_framework import generics
 from rest_framework.reverse import reverse 
 from rest_framework import viewsets 
 from rest_framework.serializers import ValidationError
+from rest_framework.permissions import IsAuthenticated , IsAdminUser,IsAuthenticatedOrReadOnly
 
 
 @api_view(['GET'])
@@ -50,7 +51,8 @@ class ReviewCreate(generics.CreateAPIView):
           serializer.save(watchlist=movie) 
           
 
-class ReviewListView(generics.ListAPIView):   
+class ReviewListView(generics.ListAPIView):  
+     permission_classes = [IsAuthenticated]  
      queryset = Review.objects.all() 
      serializer_class = ReviewSerializer
      
@@ -58,7 +60,9 @@ class ReviewListView(generics.ListAPIView):
           pk = self.kwargs['pk'] 
           return Review.objects.filter(watchlist = pk)
 
-class ReviewDetailView(generics.RetrieveUpdateDestroyAPIView): 
+class ReviewDetailView(generics.RetrieveUpdateDestroyAPIView):  
+     # permission_classes = [IsAdminUser]
+     permission_classes = [IsAuthenticatedOrReadOnly]
      queryset = Review.objects.all() 
      serializer_class = ReviewSerializer
 
