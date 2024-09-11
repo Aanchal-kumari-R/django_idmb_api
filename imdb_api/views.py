@@ -2,7 +2,7 @@
 from .models import WatchList , StreamPlatform  ,Review 
 from .serializers import WatchListSerializer, StreamPlatformSerializer ,ReviewSerializer 
 from rest_framework.response import Response 
-from .permissions import AdminOrReadOnly
+from .permissions import AdminOrReadOnly,ReviewUserOrReadOnly
 # from rest_framework import status 
 from rest_framework.decorators import api_view 
 # from django.http import Http404 
@@ -35,6 +35,7 @@ class WatchListViewSet(viewsets.ModelViewSet):
 class ReviewCreate(generics.CreateAPIView):  
      #queryset = Review.objects.all()
      serializer_class = ReviewSerializer  
+     #permission_classes = [ReviewUserOrReadOnly] 
 
      def get_queryset(self):
         return Review.objects.all() 
@@ -63,7 +64,7 @@ class ReviewListView(generics.ListAPIView):
 
 class ReviewDetailView(generics.RetrieveUpdateDestroyAPIView):  
      # permission_classes = [IsAdminUser]
-     permission_classes = [IsAuthenticatedOrReadOnly]
+     permission_classes = [ReviewUserOrReadOnly]
      queryset = Review.objects.all() 
      serializer_class = ReviewSerializer
 
