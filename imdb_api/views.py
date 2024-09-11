@@ -1,7 +1,8 @@
 # from django.http import HttpResponse, JsonResponse
 from .models import WatchList , StreamPlatform  ,Review 
 from .serializers import WatchListSerializer, StreamPlatformSerializer ,ReviewSerializer 
-from rest_framework.response import Response
+from rest_framework.response import Response 
+from .permissions import AdminOrReadOnly
 # from rest_framework import status 
 from rest_framework.decorators import api_view 
 # from django.http import Http404 
@@ -52,7 +53,7 @@ class ReviewCreate(generics.CreateAPIView):
           
 
 class ReviewListView(generics.ListAPIView):  
-     permission_classes = [IsAuthenticated]  
+     permission_classes = [AdminOrReadOnly]  
      queryset = Review.objects.all() 
      serializer_class = ReviewSerializer
      
